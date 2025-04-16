@@ -77,15 +77,178 @@ Pesquisa individual sobre os principais conceitos da linguagem Java, recursos da
 
 ## Exemplos de Código
 
-- [Exemplo de Streams API](examples/StreamsExample.java)
-- [Exemplo de Classes Seladas](examples/SealedClassesExample.java)
-- [Exemplo de Expressões Switch](examples/SwitchExpressionsExample.java)
-- [Exemplo de Threads Virtuais](examples/ExemploThreadsVirtuais.java)
-- [Exemplo de Polimorfismo e Sobrecarga](examples/Exemplos.java)
-- [Comandos da JDK](examples/JDKCommands.java)
+### Os 4 Pilares da Programação Orientada a Objetos (POO)
 
-## Como Executar
+1. **Abstração:** Esconder detalhes complexos e mostrar apenas o necessário.
+   ```java
+   public class Carro {
+      void ligar() {
+         System.out.println("Carro ligado");
+      }
+   }
+   ```
 
-1. Certifique-se de ter o JDK 21 instalado.
-2. Compile os exemplos com `gradle build`.
-3. Execute os exemplos com `java -cp build/classes/java/main examples.<NomeDoExemplo>`.
+2. **Encapsulamento:** Proteger os dados, usando private e acessando por get/set.
+   ```java
+   class Pessoa {
+      private String nome;
+      public String getNome() { return nome; }
+      public void setNome(String nome) { this.nome = nome; }
+   }
+   ```
+
+3. **Herança:** Uma classe herda atributos e métodos de outra.
+   ```java
+   class Animal {
+      void fazerSom() { System.out.println("Som genérico"); }
+   }
+
+   class Cachorro extends Animal {
+      void fazerSom() { System.out.println("Latido"); }
+   }
+   ```
+
+4. **Polimorfismo:** Um mesmo método se comporta de formas diferentes.
+   ```java
+   Animal a = new Cachorro(); 
+   a.fazerSom(); // imprime "Latido"
+   ```
+
+### Exercícios Dado em Sala / Fragmentos dos Exercícios
+
+Suponha um exemplo simples que junta POO com lógica:
+```java
+class Conta {
+    private double saldo;
+
+    public void depositar(double valor) {
+        saldo += valor;
+    }
+
+    public void sacar(double valor) {
+        if (valor <= saldo) {
+            saldo -= valor;
+        }
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+}
+```
+
+### Fluxos de Controle
+
+if/else:
+```java
+int idade = 18;
+if (idade >= 18) {
+    System.out.println("Maior de idade");
+} else {
+    System.out.println("Menor de idade");
+}
+```
+
+while:
+```java
+int i = 0;
+while (i < 5) {
+    System.out.println(i);
+    i++;
+}
+```
+
+for:
+```java
+for (int i = 0; i < 5; i++) {
+    System.out.println(i);
+}
+```
+
+### Modificadores Principais
+   - **public:** acessível de qualquer lugar.
+   - **private:** acessível só dentro da classe.
+   - **protected:** acessível na classe e em subclasses.
+   - **default (sem nada):** acessível dentro do mesmo pacote.
+
+```java
+public class Pessoa {
+    private String nome; // só dentro da classe
+    protected int idade; // na classe e subclasses
+}
+```
+
+### Arrays
+
+Array é uma estrutura para armazenar múltiplos valores do mesmo tipo.
+```java
+int[] numeros = new int[5]; // array com 5 posições
+numeros[0] = 10;
+System.out.println(numeros[0]);
+```
+
+### Switch Case
+Boa alternativa ao if para múltiplas opções:
+
+```java
+int dia = 2;
+
+switch (dia) {
+    case 1:
+        System.out.println("Domingo");
+        break;
+    case 2:
+        System.out.println("Segunda");
+        break;
+    default:
+        System.out.println("Outro dia");
+}
+```
+
+### Implementação, Membro de Classe, Construtores, Métodos
+
+Classe com construtor e métodos:
+```java
+public class Pessoa {
+    private String nome;
+
+    // Construtor
+    public Pessoa(String nome) {
+        this.nome = nome;
+    }
+
+    // Método
+    public void dizerOla() {
+        System.out.println("Olá, meu nome é " + nome);
+    }
+}
+```
+
+Membro de Classe (atributo estático):
+```java
+public class Contador {
+    public static int total = 0; // Membro de classe
+
+    public Contador() {
+        total++;
+    }
+}
+```
+
+### Herança
+
+```java
+class Funcionario {
+    String nome;
+
+    public void trabalhar() {
+        System.out.println("Trabalhando...");
+    }
+}
+
+class Gerente extends Funcionario {
+    public void trabalhar() {
+        System.out.println("Gerenciando...");
+    }
+}
+```
